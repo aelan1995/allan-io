@@ -1,3 +1,4 @@
+// app/layout.tsx
 import "./globals.css";
 import { Lato } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
@@ -9,6 +10,7 @@ const lato = Lato({
   display: "swap",
 });
 
+// ✅ Next.js 13+ metadata API (automatically injected into <head>)
 export const metadata = {
   title: "Allan IO | Web Developer",
   description:
@@ -16,6 +18,17 @@ export const metadata = {
   robots: "index, follow",
   alternates: {
     canonical: "https://allan-io.vercel.app",
+  },
+  openGraph: {
+    title: "Allan IO | Web Developer",
+    description: "Clean, responsive portfolio website built in Next.js.",
+    url: "https://allan-io.vercel.app",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Allan IO | Web Developer",
+    description: "Clean, responsive portfolio website built in Next.js.",
   },
 };
 
@@ -26,19 +39,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={lato.className}>
-      <head>
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://allan-io.vercel.app" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        {/* These are optional and help for social media preview */}
-        <meta property="og:title" content="Allan IO | Web Developer" />
-        <meta
-          property="og:description"
-          content="Clean, responsive portfolio website built in Next.js."
-        />
-        <meta property="og:url" content="https://allan-io.vercel.app" />
-        <meta property="og:type" content="website" />
-      </head>
       <body className="bg-slate-900 text-white">
         {children}
         <Analytics />
