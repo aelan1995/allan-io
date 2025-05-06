@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://allan-io.vercel.app
+
+# Sitemaps
+Sitemap: https://allan-io.vercel.app/sitemap.xml
