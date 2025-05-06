@@ -29,6 +29,7 @@ export default function RootLayout({
       <head>
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://allan-io.vercel.app" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         {/* These are optional and help for social media preview */}
         <meta property="og:title" content="Allan IO | Web Developer" />
         <meta
