@@ -1,4 +1,4 @@
-// File: C:\Users\Allan\OneDrive\Desktop\Projects\Website\allan-io\app\page.tsx
+// File: C:\Users\Allan IO\Desktop\Projects\allan-io\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

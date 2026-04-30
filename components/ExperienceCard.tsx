@@ -68,7 +68,10 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
             )}
           </div>
           <p className="text-sm text-gray-400">
-            {company} <span className="text-xs text-gray-500">({year})</span>
+            {company}
+            {year && (
+              <span className="text-xs text-gray-500"> ({year})</span>
+            )}
           </p>
         </div>
       </div>

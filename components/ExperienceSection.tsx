@@ -5,7 +5,30 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const experiences = [
   {
-    year: "Present",
+    year: "May 2024 – April 2025",
+    title: "Python Developer",
+    company: "Shooju Global",
+    description:
+      "Specializing in web scraping and data extraction, I develop robust Python scripts using libraries such as Beautiful Soup, Scrapy, and Selenium. I automate data retrieval from static and dynamic websites, APIs, and HTML content, then clean, process, and structure the data into usable formats like CSV or databases. I handle scraping challenges including proxy rotation, CAPTCHA bypassing, and rate limiting. My work supports data-driven decision-making through efficient extraction, manipulation, and visualization workflows.",
+    logo: "shooju.jpeg",
+    skills: [
+      "Python",
+      "Web Scraping",
+      "Data Scraping",
+      "Data Manipulation",
+      "Data Engineering",
+      "Data Mining",
+      "Beautiful Soup",
+      "Scrapy",
+      "Selenium",
+      "Requests",
+      "Pandas",
+      "NumPy",
+      "Data Visualization",
+    ],
+  },
+  {
+    year: "",
     title: "Data Scraper / Full Stack Developer",
     company: "Upwork",
     description:
@@ -37,6 +60,20 @@ const experiences = [
       "Data Visualization",
     ],
     projects: [
+      {
+        title: "Zdigitech Engineers LMS",
+        description:
+          "Built a Learning Management System designed to connect students, children, parents, and instructors in a single collaborative space. The platform supports multi-role engagement, enabling lessons, progress tracking, and communication between all participants.",
+        tech: [
+          "React",
+          "Django",
+          "PostgreSQL",
+          "Python",
+          "LMS",
+          "Full Stack Development",
+        ],
+        image: "upwork.png",
+      },
       {
         title: "CI/CD Integration Pipeline",
         description:
@@ -100,29 +137,6 @@ const experiences = [
         ],
         image: "upwork.png",
       },
-    ],
-  },
-  {
-    year: "May 2024 – Present",
-    title: "Python Developer",
-    company: "Shooju Global",
-    description:
-      "Specializing in web scraping and data extraction, I develop robust Python scripts using libraries such as Beautiful Soup, Scrapy, and Selenium. I automate data retrieval from static and dynamic websites, APIs, and HTML content, then clean, process, and structure the data into usable formats like CSV or databases. I handle scraping challenges including proxy rotation, CAPTCHA bypassing, and rate limiting. My work supports data-driven decision-making through efficient extraction, manipulation, and visualization workflows.",
-    logo: "shooju.jpeg",
-    skills: [
-      "Python",
-      "Web Scraping",
-      "Data Scraping",
-      "Data Manipulation",
-      "Data Engineering",
-      "Data Mining",
-      "Beautiful Soup",
-      "Scrapy",
-      "Selenium",
-      "Requests",
-      "Pandas",
-      "NumPy",
-      "Data Visualization",
     ],
   },
   {
