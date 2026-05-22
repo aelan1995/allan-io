@@ -13,12 +13,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.98.0",
+    "@supabase/supabase-js": "^2.106.1",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "framer-motion": "^12.9.4",
     "lucide-react": "^0.507.0",
     "next": "15.3.8",
     "next-sitemap": "^4.2.3",
+    "openai": "^6.39.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-simple-typewriter": "^5.0.1"
