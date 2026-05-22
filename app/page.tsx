@@ -178,11 +178,11 @@ export default function Home() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-6 right-6 z-50"
+          className="fixed bottom-24 right-6 z-50"
         >
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-4 py-2 rounded-full shadow-lg transition-all duration-300 text-sm font-medium"
+            className="bg-slate-800/80 backdrop-blur border border-slate-700 hover:bg-slate-700 text-white px-4 py-2 rounded-full shadow-lg transition-all duration-300 text-sm font-medium"
           >
             ↑ Back to Top
           </button>

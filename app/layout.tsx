@@ -3,6 +3,7 @@ import "./globals.css";
 import { Lato } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import FloatingAskButton from "@/components/FloatingAskButton";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function RootLayout({
     <html lang="en" className={lato.className}>
       <body className="bg-slate-900 text-white">
         {children}
+        <FloatingAskButton />
         <Analytics />
         <SpeedInsights />
       </body>

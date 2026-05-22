@@ -77,6 +77,27 @@ async function answerWithProvider(
   return { provider, answer, matches };
 }
 
+const MAX_QUESTIONS_PER_WINDOW = 3;
+const WINDOW_HOURS = 24;
+
+function getClientIp(req: NextRequest): string {
+  const xff = req.headers.get("x-forwarded-for");
+  if (xff) return xff.split(",")[0]!.trim();
+  return req.headers.get("x-real-ip")?.trim() || "unknown";
+}
+
+type QuotaRow = { allowed: boolean; remaining: number; resets_at: string };
+
+async function consumeQuota(ip: string): Promise<QuotaRow | null> {
+  const { data, error } = await supabase.rpc("consume_chat_quota", {
+    client_ip: ip,
+    max_count: MAX_QUESTIONS_PER_WINDOW,
+    window_hours: WINDOW_HOURS,
+  });
+  if (error || !data || !data[0]) return null;
+  return data[0] as QuotaRow;
+}
+
 export async function POST(req: NextRequest) {
   let body: { question?: string; provider?: ProviderInput };
   try {
@@ -104,17 +125,41 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const ip = getClientIp(req);
+  const quota = await consumeQuota(ip);
+  if (quota && !quota.allowed) {
+    return NextResponse.json(
+      {
+        error: "rate_limited",
+        message: `You've used all ${MAX_QUESTIONS_PER_WINDOW} questions for the next 24 hours. Try again after ${quota.resets_at}.`,
+        resetsAt: quota.resets_at,
+        remaining: 0,
+      },
+      { status: 429 }
+    );
+  }
+
   try {
+    let payload;
     if (provider === "both") {
       const [openaiResult, hfResult] = await Promise.all([
         answerWithProvider(question, "openai"),
         answerWithProvider(question, "hf"),
       ]);
-      return NextResponse.json({ results: [openaiResult, hfResult] });
+      payload = { results: [openaiResult, hfResult] };
+    } else {
+      const result = await answerWithProvider(question, provider);
+      payload = { results: [result] };
     }
 
-    const result = await answerWithProvider(question, provider);
-    return NextResponse.json({ results: [result] });
+    if (quota) {
+      return NextResponse.json({
+        ...payload,
+        remaining: quota.remaining,
+        resetsAt: quota.resets_at,
+      });
+    }
+    return NextResponse.json(payload);
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unknown error";
     return NextResponse.json({ error: message }, { status: 500 });
