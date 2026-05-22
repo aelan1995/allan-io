@@ -19,17 +19,14 @@ export async function embedWithOpenAI(text: string): Promise<number[]> {
 export async function embedWithHuggingFace(text: string): Promise<number[]> {
   if (!hfKey) throw new Error("HUGGINGFACE_API_KEY is not set");
   const res = await fetch(
-    "https://api-inference.huggingface.co/pipeline/feature-extraction/sentence-transformers/all-MiniLM-L6-v2",
+    "https://router.huggingface.co/hf-inference/models/sentence-transformers/all-MiniLM-L6-v2/pipeline/feature-extraction",
     {
       method: "POST",
       headers: {
         Authorization: `Bearer ${hfKey}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        inputs: text,
-        options: { wait_for_model: true },
-      }),
+      body: JSON.stringify({ inputs: text }),
     }
   );
   if (!res.ok) {
