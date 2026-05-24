@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 export const runtime = "nodejs";
+export const revalidate = 3600; // CV data rarely changes — cache for 1 hour
 
 export async function GET() {
   const filePath = path.join(process.cwd(), "data", "cv.md");
